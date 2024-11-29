@@ -1,7 +1,15 @@
 {
-  "name": "obe-example",
+  "name": "@fsirigm2/obe-example",
   "version": "0.1.0",
   "private": true,
+  "main": "src/components/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/components/index.js",
+      "require": "./src/components/index.js"
+    },
+    "./app": "./src/pages"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
