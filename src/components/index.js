@@ -1,1 +1,1 @@
-export { ExampleComponent } from "./example-component";
+export { default as ExampleComponent } from "./example-component";
