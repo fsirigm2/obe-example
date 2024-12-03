@@ -1,40 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# README - Paquete @fsirigm2/obe-example
 
-## Getting Started
+## PACKAGE.JSON
 
-First, run the development server:
+- Al realizar cambios se debe modificar la versión.
+- En el objeto `exports` se deben explicitar los archivos que se disponibilizan para su importación, los que no sean de estilo requieren tipado.
+- En `files` se están exportando todas las files salvo las mencionadas explícitamente con negador.
+- En `types` están definidos los tipos para los componentes exportados.
+- En `peerDependencies` deben incluirse aquellas necesarias para el funcionamiento de los componentes exportados.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## CONSIDERACIONES GENERALES
+
+- `tailwind.config.js` se incluye entre los archivos explícitamente exportados. El proyecto que consuma el package, obviamente debe tener Tailwind instalado y en su `tailwind.config.js`, debe importar este archivo de esta manera:
+
+  ```
+
+  import type { Config } from "tailwindcss";
+  import tailwindConfig from "@fsirigm2/obe-example/tailwind.config.js";
+
+  const config: Config = {
+  ...(tailwindConfig as Config),
+  };
+  export default config;
+
+  ```
+
+- Asimismo, se creó `TailwindConfig.d.ts` y se exportó el tipo en el `package.json` para que TypeScript no tenga problemas de tipado al importarlo en otros proyectos.
+
+- Se evitó el uso de rutas dinámicas en los componentes exportados para no tener problemas de archivos no encontrados al importarlos (e.g., `../components` vs `@components`).
+
+## En el proyecto donde se vaya a importar el paquete
+
+- Instalar `latest` para asegurarse de tener la última versión (`"@fsirigm2/obe-example": "latest"`).
+
+- Se debe agregar a `next.config.js` lo siguiente:
+
+```
+    /** @type {import('next').NextConfig} */
+    const nextConfig = {
+    reactStrictMode: true,
+    webpack(config) {
+        config.module.rules.push({
+        test: /\.(ts|tsx)$/,
+        use: "babel-loader",
+        include: /node_modules\/@fsirigm2\/obe-example/,
+        });
+
+        return config;
+    },
+    };
+
+    export default nextConfig;
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- También se debe agregar el archivo `babel.config.js` con el contenido:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+    module.exports = {
+    presets: ["next/babel", "@babel/preset-flow"],
+    };
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Por último, importar las hojas de estilo en el `_app`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Hecho esto, los componentes pueden importarse como en cualquier librería (siempre que estén explícitamente exportados en el package).
