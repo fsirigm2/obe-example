@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./dist", // Type declarations only in this directory
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -19,9 +18,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "plugins": [
       {
@@ -36,7 +33,5 @@
     ".next/types/**/*.ts",
     "pages/_app.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
