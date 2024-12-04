@@ -1,6 +1,6 @@
 {
   "name": "@fsirigm2/obe-example",
-  "version": "1.0.82",
+  "version": "1.0.85",
   "private": false,
   "main": "dist/bundle.js",
   "module": "dist/bundle.js",
@@ -9,12 +9,12 @@
     "./dist/bundle.css",
     "./dist/fonts"
   ],
-  "types": "./components/index.d.ts",
+  "types": "./dist/components/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/bundle.js",
       "require": "./dist/bundle.js",
-      "types": "./components/index.d.ts"
+      "types": "./dist/components/index.d.ts"
     },
     "./styles": "./dist/bundle.css"
   },

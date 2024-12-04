@@ -10,6 +10,10 @@
 
 ## CONSIDERACIONES GENERALES
 
+## En el proyecto
+
+- Al cambiar las props de un componente exportado o crear un nuevo componente, se debe agregar el tipado en components/index.d.ts
+
 ## En el proyecto donde se vaya a importar el paquete
 
 - Instalar `latest` para asegurarse de tener la última versión (`"@fsirigm2/obe-example": "latest"`).
