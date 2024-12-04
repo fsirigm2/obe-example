@@ -1,3 +1,4 @@
+import React from "react";
 import SectionHero from "../components/central-picker/SectionHero";
 import BgGlassmorphism from "../shared/BgGlassmorphism";
 
