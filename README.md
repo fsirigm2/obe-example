@@ -18,8 +18,4 @@
 
 - Instalar `latest` para asegurarse de tener la última versión (`"@fsirigm2/obe-example": "latest"`).
 
-- Importar los estilos en el `_app`:
-
-```
-import "@fsirigm2/obe-example/styles"
-```
+- Importar los estilos en el archivo `styles/index.scss`: @import "@fsirigm2/obe-example/styles";
