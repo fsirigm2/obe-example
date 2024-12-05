@@ -15,4 +15,7 @@ import "../fonts/Inter-SemiBold.ttf";
 import "../fonts/Inter-Light.ttf";
 import "../fonts/Inter-Medium.ttf";
 export { default as HeroSearchForm } from "./central-picker/HeroSearchForm";
+export { default as HeroSearchForm2 } from "./central-picker2/HeroSearchForm";
+export { default as HeroSearchForm3 } from "./central-picker3/HeroSearchForm";
+export { default as HeroSearchForm4 } from "./central-picker4/HeroSearchForm";
 //# sourceMappingURL=index.js.map

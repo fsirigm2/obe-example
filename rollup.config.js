@@ -29,17 +29,6 @@ const config = {
       minimize: true, // Minifica los estilos
       plugins: [tailwindcss, autoprefixer],
       extensions: [".css", ".scss"], // Soporta CSS y Sass
-      /* plugins: [
-        postcssUrl({
-          // Rewrite URLs in CSS to match the output folder
-          url: (asset) => {
-            if (asset.url.includes("../fonts")) {
-              return asset.url.replace("..", "./");
-            }
-            return asset.url;
-          },
-        }),
-      ], */
     }),
     terser({
       compress: {

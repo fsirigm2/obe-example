@@ -1,6 +1,6 @@
 {
   "name": "@fsirigm2/obe-example",
-  "version": "1.0.93",
+  "version": "1.1.00",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/cjs/index.js",
@@ -17,7 +17,27 @@
       "require": "./dist/cjs/index.js",
       "types": "./dist/cjs/components/index.d.ts"
     },
-    "./styles": "./dist/cjs/index.css"
+    "./styles": "./dist/cjs/index.css",
+    "./HeroSearch": {
+      "import": "./dist/cjs/central-picker/HeroSearchForm.js",
+      "require": "./dist/cjs/central-picker/HeroSearchForm.js",
+      "types": "./dist/cjs/components/central-picker/HeroSearchForm.d.ts"
+    },
+    "./HeroSearch2": {
+      "import": "./dist/cjs/central-picker2/HeroSearchForm.js",
+      "require": "./dist/cjs/central-picker2/HeroSearchForm.js",
+      "types": "./dist/cjs/components/central-picker2/HeroSearchForm.d.ts"
+    },
+    "./HeroSearch3": {
+      "import": "./dist/cjs/central-picker3/HeroSearchForm.js",
+      "require": "./dist/cjs/central-picker3/HeroSearchForm.js",
+      "types": "./dist/cjs/components/central-picker3/HeroSearchForm.d.ts"
+    },
+    "./HeroSearch4": {
+      "import": "./dist/cjs/central-picker4/HeroSearchForm.js",
+      "require": "./dist/cjs/central-picker4/HeroSearchForm.js",
+      "types": "./dist/cjs/components/central-picker4/HeroSearchForm.d.ts"
+    }
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
