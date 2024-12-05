@@ -9,25 +9,27 @@ import external from "rollup-plugin-peer-deps-external";
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
 import url from "@rollup/plugin-url";
-import postcssUrl from "postcss-url";
+/* import postcssUrl from "postcss-url"; */
 
 const config = {
   input: "components/index.ts", // Entry point of your library
   output: {
-    file: "dist/bundle.js", // Output file
-    format: "cjs", // CommonJS format
+    format: "cjs",
     sourcemap: true, // Generate source map
+    dir: "dist/cjs",
+    preserveModules: true,
+    preserveModulesRoot: "components",
   },
   plugins: [
     resolve(), // Resolve node_modules
     commonjs(), // Convert CommonJS modules to ES6
-    typescript({ tsconfig: "./tsconfig.json" }), // Transpile TypeScript and TSX
+    typescript({ tsconfig: "./tsconfig.json", declarationDir: "dist/cjs" }), // Transpile TypeScript and TSX
     postcss({
       extract: true, // Extrae los estilos a un archivo separado
       minimize: true, // Minifica los estilos
       plugins: [tailwindcss, autoprefixer],
       extensions: [".css", ".scss"], // Soporta CSS y Sass
-      plugins: [
+      /* plugins: [
         postcssUrl({
           // Rewrite URLs in CSS to match the output folder
           url: (asset) => {
@@ -37,7 +39,7 @@ const config = {
             return asset.url;
           },
         }),
-      ],
+      ], */
     }),
     terser({
       compress: {
